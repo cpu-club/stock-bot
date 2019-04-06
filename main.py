@@ -6,6 +6,15 @@ import tweepy
 from dotenv import load_dotenv
 load_dotenv()
 
+api_token = '32ab1d2959900dfbce8390c926f0518ddb193d1a96627a618'
+
+URL = 'http://api.wordnik.com/v4/words.json/randomWords'
+PARAMS = {'api_key': api_token}
+req = requests.get(url = URL, params = PARAMS) 
+data = req.json()
+for words in data:
+    print(words)
+
 def setup_api():
     auth = tweepy.OAuthHandler(os.getenv('CONSUMER_KEY'), os.getenv('CONSUMER_SECRET'))
     auth.set_access_token(os.getenv('ACCESS_TOKEN'), os.getenv('ACCESS_TOKEN_SECRET'))
